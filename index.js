@@ -6,25 +6,20 @@ function nestedTarget() {
   return document.querySelector('#nested .target')
 }
 
-function increaseRankBy(n) {
-  const list = document.querySelectorAll('.ranked-list')
-  for (let i = 0, l = list.length; i < l; i++) {
-     let children = list[i].children
-
-     for (let j = 0, k = children.length; j < k; j++) {
-       children[j].innerHTML = parseInt(children[j].innerHTML) + n
-     }
-   }
- }
 
 function deepestChild() {
-  let list1 = document.querySelector('div#grand-node')
-  let list2 = list1.children[0]
-
-    while (list2) {
-      list1 = list2
-      list2 = list1.children[0]
+  let div = document.querySelector('#grand-node').querySelectorAll('div')
+  for(let i = 0; i < div.length; i++) {
+    if (div[i]['childElementCount'] === 0 ) {
+      return div[i]
     }
-
-    return list1
   }
+}
+
+function increaseRankBy(n) {
+let li = document.querySelectorAll('.ranked-list li')
+for (let i = 0; i < li.length; i++) {
+//debugger
+  li[i].innerHTML = parseInt(li[i].innerHTML, 10) + n
+}
+}
